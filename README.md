@@ -62,4 +62,4 @@ ecommerce-funnel-analysis/
  docs/ SQL and Python documentation PDFs
 ```
 ---
-*Made by Deepak | [LinkedIn](www.linkedin.com/in/deepak1114)*
+*Made by Pathlavath Arun nayak | [LinkedIn](www.linkedin.com/in/deepak1114)*
