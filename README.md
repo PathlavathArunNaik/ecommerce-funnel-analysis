@@ -1,65 +1,232 @@
-# Funnel Drop-off & Cart Abandonment Analysis
-### Why does an e-commerce platform with 5 lakh visitors/month earn only 7 Cr?
-> Built end-to-end using MySQL · Python · Power BI
-> Synthetic dataset · 500K sessions · 4 tables · Real-world analyst workflow
+# 🛒 E-commerce Funnel & Cart Abandonment Analysis
+
+### Why does an e-commerce platform with **500K monthly visitors** generate only **₹7 Cr in revenue?**
+
+An end-to-end **E-commerce Funnel & Cart Abandonment Analysis** project built using **MySQL, Python, and Power BI**. The project analyzes 500K synthetic customer sessions to identify funnel drop-offs, conversion problems, device/channel performance, and opportunities for GMV recovery.
+
 ---
-## The Problem
-Half a million users visit this platform every month. Only 5.92% of them buy something.
-The rest — 94 out of 100 — leave. That's not a traffic problem. That's a conversion problem.
-This project answers three questions leadership actually asks:
-1. Where exactly in the funnel are users dropping off?
-2. Is the drop-off device/channel/time specific — or universal?
-3. What is the  value of fixing the top 2 problems?
+
+## 📌 Project Overview
+
+The objective of this project is to understand **where customers drop out of the e-commerce journey and why**, and to quantify the potential business impact of improving the major problem areas.
+
+### Key Business Questions
+
+1. Where exactly are customers dropping off in the purchase funnel?
+2. Are conversion problems related to **device, marketing channel, or time of day**?
+3. What is the potential revenue impact of improving the biggest conversion problems?
+4. How much revenue could potentially be recovered from abandoned carts?
+
 ---
-## What I Found
-| Finding | Detail | Business Impact |
-|---|---|---|
-| PDP → Cart is the biggest leak | 2,13,697 sessions/month lost here | Trust/UX issue on
-product pages |
-| Mobile checkout is broken | 8.4pp lower CVR vs desktop at ATC→Checkout | Not intent — pure UX
-friction |
-| Paid Ads bring the wrong traffic | CVR 4.2% vs Organic 6.6% | 57 less GMV per session |
-| Evening converts 35-55% better | 7.7–8.0% CVR at 18–22hrs vs 5.3% afternoon | Timing
-campaigns wrong |
-| 1.94 Cr sitting in abandoned carts | 73.4% abandonment, 81,756 sessions/month | 10% recovery
-= 1.94 Cr/mo |
+
+## 📊 Key Findings
+
+| Finding                            | Insight                                                            | Business Impact                                    |
+| ---------------------------------- | ------------------------------------------------------------------ | -------------------------------------------------- |
+| 🛍️ PDP → Cart is the biggest leak | **213,697 sessions/month** lost                                    | Indicates potential product-page UX/trust issues   |
+| 📱 Mobile checkout friction        | **8.4 percentage points lower CVR** than desktop at ATC → Checkout | Indicates potential mobile UX problems             |
+| 📢 Paid Ads underperform           | **4.2% CVR** vs **6.6% Organic**                                   | Paid traffic has lower conversion efficiency       |
+| 🌙 Evening performs better         | **7.7–8.0% CVR** during 18–22 hrs vs 5.3% afternoon                | Opportunity for campaign timing optimisation       |
+| 🛒 Cart abandonment                | **73.4% abandonment rate**                                         | Significant potential revenue recovery opportunity |
+
 ---
-## Tech Stack
-| Layer | Tool | What I did |
-|---|---|---|
-| Data | MySQL 8.0 | 10 queries: funnel flags VIEW, window functions, CTEs |
-| Analysis | Python (pandas, SQLAlchemy) | Cohort analysis, correlation matrix |
-| Visualisation | Plotly, seaborn, matplotlib | Funnel chart, boxplot, heatmap |
-| Dashboard | Power BI | 4 pages, slicers, DAX measures, GMV simulator |
+
+## 🛠️ Tech Stack
+
+| Technology     | Purpose                                                 |
+| -------------- | ------------------------------------------------------- |
+| **MySQL 8.0**  | Data querying, funnel analysis, CTEs & window functions |
+| **Python**     | Data analysis and exploratory analysis                  |
+| **Pandas**     | Data cleaning and transformation                        |
+| **SQLAlchemy** | Database connectivity                                   |
+| **Matplotlib** | Data visualization                                      |
+| **Seaborn**    | Statistical visualization                               |
+| **Plotly**     | Interactive visualizations                              |
+| **Power BI**   | Interactive dashboard and business reporting            |
+| **DAX**        | Measures and GMV recovery simulation                    |
+
 ---
-## Dashboard Preview
-![Dashboard](outputs/dashboard/dashboard.png)
-> The GMV Recovery Simulator (bottom row) lets you drag a slider from 0–20%
-> and watch the  Crore card update in real time. Built using DAX What-If Parameters.
----
-## Key Learnings
-- `MAX(CASE WHEN ...)` is the correct SQL pattern for multi-row-to-single-row funnel flags
-- `pct_change()` in pandas gives negative CVR% — wrong. Use `current/previous * 100`
-- LEFT JOIN (not INNER JOIN) when starting from sessions — or you silently drop 94% of data
-- Session duration has near-zero correlation with conversion (r=0.016) — long sessions =friction
-- Mobile drop-off is at ATC→Checkout, not PDP→ATC — proving it is UX, not intent
----
-## If This Were Real Data
-1. Filter bot traffic and sessions < 5 seconds before any analysis
-2. Electronics AOV would be 8-10x Fashion — category recovery sizing changes completely
-3. A/B test: simplified mobile checkout vs current — measure ATC→Checkout improvement
-4. Build the logistic regression model to score each active cart session by abandonment risk
-5. Connect to live MySQL for automated daily funnel refresh in Power BI
----
-## Project Structure
+
+## 🔄 Project Workflow
+
+```text
+Raw E-commerce Data
+        ↓
+MySQL Database
+        ↓
+SQL Data Analysis
+        ↓
+Python Data Analysis
+        ↓
+Funnel & Conversion Analysis
+        ↓
+Power BI Dashboard
+        ↓
+Business Insights
+        ↓
+Revenue Recovery Opportunities
 ```
+
+---
+
+## 📈 Analysis Performed
+
+### 1. Funnel Analysis
+
+Analyzed the customer journey across major stages:
+
+```text
+Session
+   ↓
+Product Page
+   ↓
+Add to Cart
+   ↓
+Checkout
+   ↓
+Purchase
+```
+
+The analysis identifies the stages with the highest customer drop-off.
+
+### 2. Device Analysis
+
+Compared conversion behavior across:
+
+* Desktop
+* Mobile
+* Other devices
+
+The analysis identified significant mobile checkout friction.
+
+### 3. Channel Analysis
+
+Compared customer acquisition channels including:
+
+* Organic
+* Paid Ads
+* Other marketing sources
+
+This helped identify differences in traffic quality and conversion efficiency.
+
+### 4. Time-Based Analysis
+
+Analyzed conversion rates across different hours of the day to identify high-performing periods.
+
+### 5. Cart Abandonment Analysis
+
+Measured:
+
+* Add-to-cart sessions
+* Checkout sessions
+* Purchase sessions
+* Abandonment rate
+* Potential revenue recovery
+
+---
+
+## 💡 Business Recommendations
+
+Based on the analysis:
+
+1. **Improve the product detail page experience** to reduce PDP → Cart drop-off.
+2. **Optimize the mobile checkout experience** to reduce checkout friction.
+3. Review **paid advertising targeting and traffic quality**.
+4. Increase campaign focus during **high-conversion evening hours**.
+5. Implement **cart recovery campaigns** for abandoned sessions.
+6. Use A/B testing to measure the impact of checkout improvements.
+
+---
+
+## 📊 Power BI Dashboard
+
+The Power BI dashboard provides an interactive view of:
+
+* Funnel performance
+* Conversion rates
+* Cart abandonment
+* Device performance
+* Channel performance
+* Time-based conversion
+* GMV recovery opportunities
+
+### GMV Recovery Simulator
+
+The dashboard includes a **GMV Recovery Simulator** using Power BI **DAX What-If Parameters**, allowing users to simulate different cart-recovery scenarios.
+
+---
+
+## 🧠 Key Learnings
+
+During this project, I developed practical experience with:
+
+* Advanced SQL funnel analysis
+* CTEs and window functions
+* Data cleaning and transformation using Pandas
+* Customer conversion analysis
+* Cohort and correlation analysis
+* Business-oriented data storytelling
+* Power BI dashboard development
+* DAX measures and What-If Parameters
+* Translating analytical findings into business recommendations
+
+---
+
+## 📂 Project Structure
+
+```text
 ecommerce-funnel-analysis/
- data/ Schema + sample CSVs
- sql/ 10 queries (numbered, sequential)
- python/ 6 analysis scripts + requirements.txt
- powerbi/ Dashboard PDF + .pbix
- outputs/ Charts, screenshots
- docs/ SQL and Python documentation PDFs
+│
+├── data/
+│   └── Schema & sample datasets
+│
+├── sql/
+│   └── SQL analysis queries
+│
+├── python/
+│   └── Python analysis scripts
+│
+├── powerbi/
+│   └── Power BI dashboard files
+│
+├── outputs/
+│   └── Charts & analysis outputs
+│
+├── docs/
+│   └── SQL & Python documentation
+│
+├── requirements.txt
+└── README.md
 ```
+
 ---
-*Made by Pathlavath Arun nayak | [LinkedIn](www.linkedin.com/in/deepak1114)*
+
+## 🚀 Future Improvements
+
+If this were connected to a real production environment, the project could be extended with:
+
+* 🤖 Logistic Regression for cart-abandonment prediction
+* 📊 Automated daily Power BI refresh
+* 🧪 A/B testing for mobile checkout improvements
+* 🎯 Customer-level abandonment risk scoring
+* 🔄 Real-time funnel monitoring
+* 🤝 Integration with CRM and marketing platforms
+
+---
+
+## 👨‍💻 Author
+
+### **Pathlavath Arun Naik**
+
+**B.Tech Biotechnology | IIT Madras**
+
+Interested in **Data Analytics, Data Science, AI & Machine Learning**.
+
+### 🔗 Connect With Me
+
+* 💻 **GitHub:** [PathlavathArunNaik](https://github.com/PathlavathArunNaik)
+* 💼 **LinkedIn:** [Pathlavath Arun Naik](https://www.linkedin.com/in/pathlavath-arun-naik)
+
+---
+
+⭐ **If you found this project interesting, consider giving the repository a star!**
