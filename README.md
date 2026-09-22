@@ -224,6 +224,6 @@ Interested in **Data Analytics, Data Science, AI & Machine Learning**.
 
 ### 🔗 Connect With Me
 
-* 📧 Gmail ID: arunnaik6616@gmail.com
 * 💻 **GitHub:** [PathlavathArunNaik](https://github.com/PathlavathArunNaik)
 * 💼 **LinkedIn:** [Pathlavath Arun Naik](https://www.linkedin.com/in/pathlavath-arun-naik)
+* 📧 **Gmail ID:** [arunnaik6616@gmail.com](mailto:arunnaik6616@gmail.com)
