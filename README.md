@@ -226,7 +226,3 @@ Interested in **Data Analytics, Data Science, AI & Machine Learning**.
 
 * 💻 **GitHub:** [PathlavathArunNaik](https://github.com/PathlavathArunNaik)
 * 💼 **LinkedIn:** [Pathlavath Arun Naik](https://www.linkedin.com/in/pathlavath-arun-naik)
-
----
-
-⭐ **If you found this project interesting, consider giving the repository a star!**
